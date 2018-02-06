@@ -1,0 +1,8 @@
+<div class='hot-blog'>
+	<div class='hot-blog-title'>热门博文</div>
+	<ul class='hot-blog-list'>
+		<% hotPosts.forEach(function(post){ %>
+		<li><a href='/posts/<%= post._id %>'><%= post.title %></a></li>
+		<% }) %>
+	</ul>
+</div>

@@ -1,0 +1,22 @@
+<div class="right-rail" id="right-rail">
+<table class="ui unstackable table" style="width: initial;">
+  <thead>
+    <tr>
+      <th>文章列表</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<% posts.forEach(function (post){ %>
+    <tr>
+      <td><a href="#<%= post._id %>"><%= post.title %></a></td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>
+<script>
+  $('a').click(function(){
+  		$('a').removeClass('active');
+  		$(this).addClass('active');
+  	})
+</script>
+</div>

@@ -1,0 +1,30 @@
+<%- include('header') %>
+
+<div class="ui middle aligned center aligned grid">
+  <div class="column" style="width:422px;margin-top:165px;">
+    <h2 class="ui teal image header">
+      <div>Log-in to your account</div>
+    </h2>
+    <form class="ui form segment" method="post">
+      <div class="field required">
+        <div class="ui left icon input">
+           <i class="user icon"></i>
+           <input placeholder="用户名" type="text" name="name">
+        </div>
+      </div>
+      <div class="field required">
+        <div class="ui left icon input">
+          <i class="lock icon"></i>
+          <input placeholder="密码" type="password" name="password">
+        </div>
+      </div>
+      <input type="submit" class="ui fluid large teal submit button" value="登录">
+    </form>
+    <div class="ui message">
+      No account ? please
+      <a href="/signup">Sign Up</a>
+    </div>  
+  </div>
+</div>
+
+<%- include('footer') %>

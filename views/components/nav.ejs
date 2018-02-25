@@ -1,10 +1,10 @@
 <div class="nav">
   <div class="ui grid" id="nav">
   	<div id="dimmer"></div>
-    <div class="four wide column"></div>
-    <div class="eight wide column">
+    <!-- <div class="four wide column"></div> -->
+    <div class="sixteen wide column">
       <a href="/posts"><img src="/pic/blog.svg" id="blogImg"></a>
-      <h2 style="margin-bottom:200px"><%= blog.description %></h2>
+      <h2 style="margin-bottom:200px;color:#777;" id="nav-describe"><%= blog.description %></h2>
       <div id="searchBox"><%- include('search') %></div>
     </div>
   </div>
@@ -13,24 +13,26 @@
 <script>
 	var pathname = window.location.pathname;
 	// console.log(pathname);
-	if(pathname == '/posts'){
-		window.onscroll = function () {
-		   var t = document.documentElement.scrollTop || document.body.scrollTop;
-		   // console.log(t);
-		   var n = document.getElementById('navFixed').style.display;
-		   if(t>534 && (n == 'none' || n == '')){
-				$("#navFixed").css({"display":"block","position":"fixed"});
-				$("#blogImg").css({"position":"fixed","left":"20px","margin-top":"0px","width":"45px"});
-		   }else if(t <534 &&  n == 'block'){
-				$("#navFixed").css({"display":"none","position":"static"});
-				$("#blogImg").css({"position":"static","margin-top":"120px","width":"128px"});
-		   }
-		} 
-	}else{
-		$("#navFixed").css({"display":"block","position":"fixed"});
-		$("#blogImg").css({"position":"fixed","left":"20px","margin-top":"0px","width":"45px"});
-		$("#nav").css({"height":"70px"});
-		$("#dimmer").css({"height":"70px"});
-		$("#searchBox").css({"display":"none"});
-	}
+		if(pathname == '/posts'){
+			window.onscroll = function () {
+			   var t = document.documentElement.scrollTop || document.body.scrollTop;
+			   // console.log(t);
+			   var n = document.getElementById('navFixed').style.display;
+			   if( window.innerWidth > 1200){
+				   if(t>534 && (n == 'none' || n == '')){
+						$("#navFixed").css({"display":"block","position":"fixed"});
+						$("#blogImg").css({"position":"fixed","left":"20px","margin-top":"0px","width":"45px"});
+				   }else if(t <534 &&  n == 'block'){
+						$("#navFixed").css({"display":"none","position":"static"});
+						$("#blogImg").css({"position":"static","margin-top":"120px","width":"128px"});
+				   }
+				}
+			} 
+		}else{
+			$("#navFixed").css({"display":"block","position":"fixed"});
+			$("#blogImg").css({"position":"fixed","left":"20px","margin-top":"0px","width":"45px"});
+			$("#nav").css({"height":"70px"});
+			$("#dimmer").css({"height":"70px"});
+			$("#searchBox").css({"display":"none"});
+		}
 </script>

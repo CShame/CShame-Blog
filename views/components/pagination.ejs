@@ -1,80 +1,82 @@
-<div class="ui floated right pagination menu" style="margin-top: 10px;">
-  <% 
-     var pageCount = parseInt((Count-1)/10) + 1;    //总页数
-     var page = page;             //当前页数
-     var prenum;  
-   %>
-   <%   if(page!= 1){ %>
-        <a class="icon item" href="posts?page=<%= page-1 %>">
-          <i class="left chevron icon"></i>
-        </a>
-   <% }else{ %>
-        <a class="icon item" href="javascript:void(0)">
-          <i class="left chevron icon"></i>
-        </a>
-   <% } %>
+<div style="text-align:center;">
+  <div class="ui pagination menu" style="margin-top: 10px;">
+    <% 
+       var pageCount = parseInt((Count-1)/10) + 1;    //总页数
+       var page = page;             //当前页数
+       var prenum;  
+     %>
+     <%   if(page!= 1){ %>
+          <a class="icon item" href="posts?page=<%= page-1 %>">
+            <i class="left chevron icon"></i>
+          </a>
+     <% }else{ %>
+          <a class="icon item" href="javascript:void(0)">
+            <i class="left chevron icon"></i>
+          </a>
+     <% } %>
 
-   <%
-   // 当前页大于3的时候，前面显示...,并点一下减1，大于7的时候，点一下减5
-   %>
-   <% if(pageCount > 5){ %>
-     <% if(page > 3 && page <= 7) { %>
-        <a class="icon item" href="posts?page=<%= page-1 %>">
+     <%
+     // 当前页大于3的时候，前面显示...,并点一下减1，大于7的时候，点一下减5
+     %>
+     <% if(pageCount > 5){ %>
+       <% if(page > 3 && page <= 7) { %>
+          <a class="icon item" href="posts?page=<%= page-1 %>">
+              <i class="ellipsis horizontal icon"></i>
+          </a>
+       <% }else if(page > 7){ %>
+          <a class="icon item" href="posts?page=<%= page-5 %>">
+              <i class="ellipsis horizontal icon"></i>
+          </a>
+        <% } %>
+      <% } %>
+
+
+      <% if(pageCount <5) {  %>
+      <%  for(var i = 1 ;i<=pageCount;i++) { %>
+          <% if(page == i){ %>
+            <a class="item" style="background:#f6f6f6;" href="posts?page=<%= i %>"><%= i %></a>
+          <% }else{ %>
+            <a class="item" href="posts?page=<%= i %>"><%= i %></a>
+          <% } %>
+      <% }}else if(pageCount - page < 4){ %>
+          <% for(var i=pageCount-4;i<=pageCount;i++) { %>
+          <% if(page == i){ %>
+            <a class="item" style="background:#f6f6f6;" href="posts?page=<%= i %>"><%= i %></a>
+          <% }else{ %>
+            <a class="item" href="posts?page=<%= i %>"><%= i %></a>
+          <% } %>
+      <% }}else{ %>
+          <% for(var i= page -2;i<=page+2;i++){ %>
+          <% if(page == i){ %>
+            <a class="item" style="background:#f6f6f6;" href="posts?page=<%= i %>"><%= i %></a>
+          <% }else{ %>
+            <a class="item" href="posts?page=<%= i %>"><%= i %></a>
+          <% } %>
+      <% }} %>
+
+      <%
+      //pageCount -page 大于2的时候显示...,小于等于6的时候点击加1，大于等于6的时候点击加5
+      %>
+     <% if(pageCount - page > 2 && pageCount - page <= 6) { %>
+        <a class="icon item" href="posts?page=<%= page+1 %>">
             <i class="ellipsis horizontal icon"></i>
         </a>
-     <% }else if(page > 7){ %>
-        <a class="icon item" href="posts?page=<%= page-5 %>">
+     <% }else if(pageCount - page > 6){ %>
+        <a class="icon item" href="posts?page=<%= page+5 %>">
             <i class="ellipsis horizontal icon"></i>
         </a>
       <% } %>
-    <% } %>
 
 
-    <% if(pageCount <5) {  %>
-    <%  for(var i = 1 ;i<=pageCount;i++) { %>
-        <% if(page == i){ %>
-          <a class="item" style="background:#f6f6f6;" href="posts?page=<%= i %>"><%= i %></a>
-        <% }else{ %>
-          <a class="item" href="posts?page=<%= i %>"><%= i %></a>
-        <% } %>
-    <% }}else if(pageCount - page < 4){ %>
-        <% for(var i=pageCount-4;i<=pageCount;i++) { %>
-        <% if(page == i){ %>
-          <a class="item" style="background:#f6f6f6;" href="posts?page=<%= i %>"><%= i %></a>
-        <% }else{ %>
-          <a class="item" href="posts?page=<%= i %>"><%= i %></a>
-        <% } %>
-    <% }}else{ %>
-        <% for(var i= page -2;i<=page+2;i++){ %>
-        <% if(page == i){ %>
-          <a class="item" style="background:#f6f6f6;" href="posts?page=<%= i %>"><%= i %></a>
-        <% }else{ %>
-          <a class="item" href="posts?page=<%= i %>"><%= i %></a>
-        <% } %>
-    <% }} %>
+      <%   if(page!= pageCount){ %>
+          <a class="icon item" href="posts?page=<%= page+1 %>">
+            <i class="right chevron icon"></i>
+          </a>
+      <% }else{ %>
+          <a class="icon item" href="javascript:void(0)">
+            <i class="right chevron icon"></i>
+          </a>
+      <% } %>
 
-    <%
-    //pageCount -page 大于2的时候显示...,小于等于6的时候点击加1，大于等于6的时候点击加5
-    %>
-   <% if(pageCount - page > 2 && pageCount - page <= 6) { %>
-      <a class="icon item" href="posts?page=<%= page+1 %>">
-          <i class="ellipsis horizontal icon"></i>
-      </a>
-   <% }else if(pageCount - page > 6){ %>
-      <a class="icon item" href="posts?page=<%= page+5 %>">
-          <i class="ellipsis horizontal icon"></i>
-      </a>
-    <% } %>
-
-
-    <%   if(page!= pageCount){ %>
-        <a class="icon item" href="posts?page=<%= page+1 %>">
-          <i class="right chevron icon"></i>
-        </a>
-    <% }else{ %>
-        <a class="icon item" href="javascript:void(0)">
-          <i class="right chevron icon"></i>
-        </a>
-    <% } %>
-
+  </div>
 </div>

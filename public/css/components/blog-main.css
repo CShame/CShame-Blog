@@ -1,0 +1,27 @@
+/* ---------- blog-home-main ---------- */
+@media screen and (min-width:880px) and (max-width: 1200px) {
+  .blog-home-main{
+    margin:0 auto;
+  }
+
+  .blog-home-main .blog-r{
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .blog-home-main{
+    margin:0 auto;
+    width: 1170px;
+  }
+
+  .blog-home-main .blog-l{
+    float:left;
+  }
+
+  .blog-home-main .blog-r{
+    float: right;
+    width: 300px;
+    background: #fff;
+  }
+}

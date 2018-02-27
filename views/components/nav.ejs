@@ -12,8 +12,14 @@
  <div id="navFixed"></div>
 <script>
 	var pathname = window.location.pathname;
-	// console.log(pathname);
 		if(pathname == '/posts'){
+			window.onload=function(){				
+				if(window.innerWidth < 1200 ){
+					console.log(document.getElementsByClassName('nav-setting')[0]);
+					document.getElementsByClassName('nav-setting')[0].style.position = 'absolute';
+				}
+			}
+	
 			window.onscroll = function () {
 			   var t = document.documentElement.scrollTop || document.body.scrollTop;
 			   // console.log(t);

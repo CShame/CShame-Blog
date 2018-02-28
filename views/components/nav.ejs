@@ -12,33 +12,29 @@
  <div id="navFixed"></div>
 <script>
 	var pathname = window.location.pathname;
-		if(pathname == '/posts'){
-			window.onload=function(){				
-				if(window.innerWidth < 1200 ){
-					console.log(document.getElementsByClassName('nav-setting')[0]);
-					document.getElementsByClassName('nav-setting')[0].style.position = 'absolute';
+	if(pathname == '/posts'){
+		if( window.innerWidth > 1200){
+			window.onscroll = function () {
+				var t = document.documentElement.scrollTop || document.body.scrollTop;
+				var n = document.getElementById('navFixed').style.display;
+				if(t>534 && (n == 'none' || n == '')){
+					$("#navFixed").css({"display":"block","position":"fixed"});
+					$("#blogImg").css({"position":"fixed","left":"20px","margin-top":"0px","width":"45px"});
+				}else if(t <534 &&  n == 'block'){
+					$("#navFixed").css({"display":"none","position":"static"});
+					$("#blogImg").css({"position":"static","margin-top":"120px","width":"128px"});
 				}
 			}
-	
-			window.onscroll = function () {
-			   var t = document.documentElement.scrollTop || document.body.scrollTop;
-			   // console.log(t);
-			   var n = document.getElementById('navFixed').style.display;
-			   if( window.innerWidth > 1200){
-				   if(t>534 && (n == 'none' || n == '')){
-						$("#navFixed").css({"display":"block","position":"fixed"});
-						$("#blogImg").css({"position":"fixed","left":"20px","margin-top":"0px","width":"45px"});
-				   }else if(t <534 &&  n == 'block'){
-						$("#navFixed").css({"display":"none","position":"static"});
-						$("#blogImg").css({"position":"static","margin-top":"120px","width":"128px"});
-				   }
-				}
-			} 
 		}else{
 			$("#navFixed").css({"display":"block","position":"fixed"});
 			$("#blogImg").css({"position":"fixed","left":"20px","margin-top":"0px","width":"45px"});
-			$("#nav").css({"height":"70px"});
-			$("#dimmer").css({"height":"70px"});
-			$("#searchBox").css({"display":"none"});
+			$("#searchBox").css({"position":"fixed","z-index":"101"});
 		}
+	}else{
+		$("#navFixed").css({"display":"block","position":"fixed"});
+		$("#blogImg").css({"position":"fixed","left":"20px","margin-top":"0px","width":"45px"});
+		$("#nav").css({"height":"70px"});
+		$("#dimmer").css({"height":"70px"});
+		$("#searchBox").css({"display":"none"});
+	}
 </script>

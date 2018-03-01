@@ -9,7 +9,10 @@
     </div>
   </div>
 </div>
- <div id="navFixed"></div>
+ <div id="navFixed">
+ 	<a href="/posts"><img src="/pic/blog.svg" class="smallBlogImg"></a>
+ 	<div class="smallSearchBox"><%- include('search') %></div>
+ </div>
 <script>
 	var pathname = window.location.pathname;
 	if(pathname == '/posts'){
@@ -19,22 +22,23 @@
 				var n = document.getElementById('navFixed').style.display;
 				if(t>534 && (n == 'none' || n == '')){
 					$("#navFixed").css({"display":"block","position":"fixed"});
-					$("#blogImg").css({"position":"fixed","left":"20px","margin-top":"0px","width":"45px"});
+					// $("#blogImg").css({"position":"fixed","left":"20px","margin-top":"0px","width":"45px"});
 				}else if(t <534 &&  n == 'block'){
 					$("#navFixed").css({"display":"none","position":"static"});
-					$("#blogImg").css({"position":"static","margin-top":"120px","width":"128px"});
+					// $("#blogImg").css({"position":"static","margin-top":"120px","width":"128px"});
 				}
 			}
 		}else{
 			$("#navFixed").css({"display":"block","position":"fixed"});
-			$("#blogImg").css({"position":"fixed","left":"20px","margin-top":"0px","width":"45px"});
-			$("#searchBox").css({"position":"fixed","z-index":"101"});
+			// $("#blogImg").css({"position":"fixed","left":"20px","margin-top":"0px","width":"45px"});
+			// $("#searchBox").css({"position":"fixed","z-index":"101"});
 		}
 	}else{
 		$("#navFixed").css({"display":"block","position":"fixed"});
-		$("#blogImg").css({"position":"fixed","left":"20px","margin-top":"0px","width":"45px"});
+		// $("#blogImg").css({"position":"fixed","left":"20px","margin-top":"0px","width":"45px"});
 		$("#nav").css({"height":"70px"});
 		$("#dimmer").css({"height":"70px"});
 		$("#searchBox").css({"display":"none"});
+		$(".smallSearchBox").css({"display":"none"});
 	}
 </script>

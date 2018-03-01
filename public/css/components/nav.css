@@ -43,11 +43,19 @@
   .nav .grid #dimmer{
     height:604px;
   }
+
+  #navFixed{
+    display: none;
+  }
 }
 
 @media screen and (max-width: 1200px) {
   .nav .grid #dimmer{
     height:70px;
+  }
+
+  .nav #blogImg{
+    display: none;
   }
 }
 
@@ -58,20 +66,25 @@
   background: linear-gradient(#333451, #BF876E);
 }
 
+#navFixed .smallBlogImg{
+  width: 45px;
+  background: linear-gradient(#333451, #BF876E);
+  border-radius: 50%;
+  float: left;
+  margin-left: 5px;
+}
+
+#navFixed .smallSearchBox{
+  float: left;
+  margin-left: 10px;
+}
+
 @media screen and (max-width: 410px){
-  .nav #blogImg{
+  #navFixed .smallBlogImg{
     display: none !important;
   }
 }
 
-@media screen and (min-width: 410px) and (max-width: 1200px) {
-  .nav #blogImg{
-    margin-top: 0 !important;
-    width: 45px !important;
-    left: 20px !important;
-    position: absolute;
-  }
-}
 
 @media screen and (max-width: 1200px) {
   .nav #nav-describe{
@@ -87,12 +100,6 @@
   background: #999;
 }
 
-@media screen and (max-width: 410px) {
-  .nav #searchBox{
-    float: left !important;
-  }
-}
-
 
 #navFixed{
   height:70px;
@@ -103,6 +110,7 @@
   display:none;
   position:static;
   z-index: 100;
+  padding-top: 14px;
 }
 
 
@@ -119,6 +127,10 @@
   .nav-setting {
       right: 5px;
       /*position: absolute;*/
+  }
+
+  .nav-setting .ui.dropdown .icon{
+    margin-left: 2px;
   }
 }
 
@@ -137,11 +149,6 @@
   background-color: #fff !important;
 }
 
-@media screen and (max-width: 1200px) {
-  .nav-setting .ui.dropdown .icon{
-    margin-left: 2px;
-  }
-}
 
 .nav-setting .icon.bars {
   color: #000;

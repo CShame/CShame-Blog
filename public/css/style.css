@@ -20,28 +20,30 @@ h3 a:hover{
   border-radius: 3px;
   width: 48px;
   height: 48px;
-  float: right;
+  /*float: right;*/
 }
 
 /* ---------- post-main ---------- */
 .post-main{
   margin:0 auto;
-  width: 96%;
-  min-width: 980px;
+  /*width: 96%;*/
   max-width: 1256px;
+  display: flex;
+}
+
+@media screen and (max-width: 1000px) {
+  .post-main .post-l{
+    display: none;
+  }
 }
 
 .post-main .post-l{
-  float: left;
-  width: 270px;
-  margin: 0 auto;
-  margin-right: -280px;
+    width: 270px;
+    margin-right: 10px;
 }
 
 .post-main .post-r{
-  float: right;
-  padding-left: 280px;
-  width: 100%;
+    overflow: auto;
 }
 
 /* ---------------------------------- */
@@ -82,25 +84,25 @@ h3 a:hover{
 
 @media screen and (max-width: 750px) {
   .right-rail table{
-    display: none !important;
+    display: none;
   }
 }
 
 @media screen and (max-width: 900px) {
   .right-rail table{
-      margin-left: 200px !important;
+      margin-left: 200px;
   }
 }
 
 @media screen and (max-width: 1000px) {
   .right-rail table{
-      margin-left: 250px !important;
+      margin-left: 250px;
   }
 }
 
 @media screen and (min-width: 1000px) {
   .right-rail table{
-      margin-left: 300px !important;
+      margin-left: 300px;
   }
 }
 

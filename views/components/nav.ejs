@@ -1,7 +1,7 @@
 <div class="nav">
   <div class="ui grid" id="nav">
   	<div id="dimmer"></div>
-    <div class="sixteen wide column">
+    <div id="bigHeader" class="sixteen wide column">
       <a href="/posts"><img src="/pic/blog.svg" id="blogImg"></a>
       <h2 style="margin-bottom:200px;color:#777;" id="nav-describe"><%= blog.description %></h2>
       <div id="searchBox"><%- include('search') %></div>
@@ -33,5 +33,6 @@
 		$("#searchBox").css({"display":"none"});
 		$(".smallBlogImg").css({"display":"block"});
 		$(".smallSearchBox").css({"display":"none"});
+		$("#bigHeader").css({"display":"none"});
 	}
 </script>

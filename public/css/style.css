@@ -118,3 +118,21 @@ h3 a:hover{
 .right-rail .active{
   color:#222;
 }
+
+/*sign-up*/
+@media screen and (min-width: 651px) {
+  .sign-up{
+    margin:auto;
+    width: 50%;
+  }
+}
+@media screen and (max-width: 650px) {
+  .sign-up{
+    margin:auto;
+  }
+}
+@media screen and (max-width: 415px) {
+  .sign-up{
+      width: 100%
+  }
+}

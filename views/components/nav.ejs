@@ -12,20 +12,22 @@
  	<a href="/posts"><img src="/pic/blog.svg" class="smallBlogImg"></a>
  	<div class="smallSearchBox"><%- include('search') %></div>
  </div>
+ 
 <script>
+autoAdaptive();
+window.onresize = function(){
+	autoAdaptive();
+}
+function autoAdaptive(){
 	var pathname = window.location.pathname;
 	if(pathname == '/posts'){
 		if( window.innerWidth > 1200){
-			window.onscroll = function () {
-				var t = document.documentElement.scrollTop || document.body.scrollTop;
-				var n = document.getElementById('navFixed').style.display;
-				if(t>534 && (n == 'none' || n == '')){
-					$("#navFixed").css({"display":"block","position":"fixed"});
-				}else if(t <534 &&  n == 'block'){
-					$("#navFixed").css({"display":"none","position":"static"});
-				}
-			}
-		}else{$("#navFixed").css({"display":"block","position":"fixed"});}
+			$("#navFixed").css({"display":"none","position":"static"});
+			$(window).scroll(scrollEvent);
+		}else{
+			$(window).unbind('scroll', scrollEvent);
+			$("#navFixed").css({"display":"block","position":"fixed"});
+		}
 	}else{
 		$("#navFixed").css({"display":"block","position":"fixed"});
 		$("#nav").css({"height":"70px"});
@@ -35,4 +37,14 @@
 		$(".smallSearchBox").css({"display":"none"});
 		$("#bigHeader").css({"display":"none"});
 	}
+}
+function scrollEvent(){
+	var t = document.documentElement.scrollTop || document.body.scrollTop;
+	var n = document.getElementById('navFixed').style.display;
+	if(t>534 && (n == 'none' || n == '')){
+		$("#navFixed").css({"display":"block","position":"fixed"});
+	}else if(t <534 &&  n == 'block'){
+		$("#navFixed").css({"display":"none","position":"static"});
+	}
+}
 </script>

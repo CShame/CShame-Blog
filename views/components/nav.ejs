@@ -43,6 +43,7 @@ function scrollEvent(){
 	var n = document.getElementById('navFixed').style.display;
 	if(t>534 && (n == 'none' || n == '')){
 		$("#navFixed").css({"display":"block","position":"fixed"});
+		$(".smallSearchBox").css({"display":"none"});
 	}else if(t <534 &&  n == 'block'){
 		$("#navFixed").css({"display":"none","position":"static"});
 	}

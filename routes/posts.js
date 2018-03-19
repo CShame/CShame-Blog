@@ -5,14 +5,16 @@ var PostModel = require('../models/posts');
 var CommentModel = require('../models/comments');
 var checkLogin = require('../middlewares/check').checkLogin;
 
-//一些需要转译的字符
+//一些需要转译的字符,有问题
 function translationString(s) {
-  return  s.replace(/</g,"&lt;")
-      .replace(/>/g,"&gt;")
-      .replace(/&/g,"&amp;")
-      .replace(/"/g,"&quot;")
-      .replace(/'/g,"&#x27;")
-      .replace(/\//g,"&#x2f;");
+  // return  s.replace(/</g,"&lt;")
+  //     .replace(/>/g,"&gt;")
+  //     .replace(/&/g,"&amp;")
+  //     .replace(/"/g,"&quot;")
+  //     .replace(/'/g,"&#x27;")
+  //     .replace(/\//g,"&#x2f;");
+
+      return s;
 }
 
 // GET /posts 所有用户或者特定用户的文章页

@@ -1,7 +1,7 @@
 {
-  "name": "myblog",
+  "name": "CShame | 博客",
   "version": "1.0.0",
-  "description": "Just do it",
+  "description": "千里之行，始于足下",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

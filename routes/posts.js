@@ -66,7 +66,6 @@ router.get('/', function(req, res, next) {
   }
 
   Promise.all([getPosts(),getPostsCount(),getHotPosts()]).then(function(result){
-        console.log(author);
           res.render('posts', {
           posts: result[0],
           postsCount:result[1],

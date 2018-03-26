@@ -137,3 +137,34 @@ h3 a:hover{
       width: 100%
   }
 }
+
+.footer{
+  height: 250px;
+  background: #fff;
+  margin-top: 20px;
+  border-top: 1px solid #ddd;
+  position: relative;
+}
+
+.footer .imgs{
+  display: flex;
+  justify-content:center;
+  margin-top: 100px;
+}
+
+.footer .imgs a{
+  color: #000;
+}
+
+.footer .imgs i{
+  font-size: 50px;
+}
+
+.footer .imgs i:hover{
+  color: cadetblue;
+}
+
+.footer .font{
+    text-align: center;
+    color: #999;
+}

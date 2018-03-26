@@ -13,16 +13,19 @@
   .blog-home-main{
     margin:0 auto;
     width: 1170px;
+    display: flex;
+    justify-content: center;
   }
 
   .blog-home-main .blog-l{
-    float:left;
+    /*float:left;*/
   }
 
   .blog-home-main .blog-r{
-    float: right;
+    /*float: right;*/
     width: 300px;
-    background: #fff;
+    /*background: #fff;*/
+    margin-left: 20px;
   }
 }
 @media screen and (min-width:880px){

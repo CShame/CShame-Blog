@@ -646,6 +646,7 @@
   line-height: 1.45;
   background-color: #f6f8fa;
   border-radius: 3px;
+  max-height: 500px;
 }
 
 .markdown-body pre code {

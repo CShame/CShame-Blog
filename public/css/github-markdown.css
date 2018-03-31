@@ -430,7 +430,7 @@
   padding: 0 1em;
   color: #516272;
   border-left: 0.25em solid #dfe2e5;
-  white-space: pre-wrap;
+  /*white-space: pre-wrap;*/
 }
 
 .markdown-body blockquote>:first-child {
@@ -659,6 +659,7 @@
   word-wrap: normal;
   background-color: transparent;
   border: 0;
+  color: #090;
 }
 
 .markdown-body pre code::before,

@@ -42,7 +42,7 @@ gulp.task('allNodeJs', function (done) {
 });
 
 gulp.task('allJs', function (done) {
-  gulp.src(['./public/js/**/*.js'])
+  gulp.src(['./public/js/**/*.js','!./public/js/jquery-3.1.1.min.js','!./public/js/semantic.min.js'])
     .pipe(ngAnnotate({ add: true }))
     .pipe(sourcemaps.init())
     .pipe(concat('all.js'))

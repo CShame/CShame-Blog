@@ -647,6 +647,7 @@
   background-color: #f6f8fa;
   border-radius: 3px;
   max-height: 500px;
+  border: 1px solid #ccc;
 }
 
 .markdown-body pre code {
@@ -659,7 +660,6 @@
   word-wrap: normal;
   background-color: transparent;
   border: 0;
-  color: #090;
 }
 
 .markdown-body pre code::before,

@@ -27,22 +27,22 @@ h3 a:hover{
 .post-main{
   margin:0 auto;
   /*width: 96%;*/
-  max-width: 1256px;
+  max-width: 1180px;
   display: flex;
 }
 
 @media screen and (max-width: 1000px) {
-  .post-main .post-l{
+  .post-main .post-r{
     display: none;
   }
 }
 
-.post-main .post-l{
+.post-main .post-r{
     width: 270px;
-    margin-right: 10px;
+    margin-left: 10px;
 }
 
-.post-main .post-r{
+.post-main .post-l{
     overflow: auto;
     width: 100%;
 }

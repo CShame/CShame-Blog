@@ -13,6 +13,10 @@
 	max-width: 800px;
 }
 
+.create-page textarea{
+	height: 400px;
+}
+
 
 @media screen and (max-width: 415px) {
 	.create-page .create-page-l{

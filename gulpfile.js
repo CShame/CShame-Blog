@@ -42,7 +42,7 @@ gulp.task('allNodeJs', function (done) {
 });
 
 gulp.task('allJs', function (done) {
-  gulp.src(['./public/js/**/*.js','!./public/js/jquery-3.1.1.min.js','!./public/js/semantic.min.js'])
+  gulp.src(['./public/js/**/*.js'])
     .pipe(ngAnnotate({ add: true }))
     .pipe(sourcemaps.init())
     .pipe(concat('all.js'))
@@ -53,7 +53,7 @@ gulp.task('allJs', function (done) {
 });
 
 gulp.task('allCss', function (done) {
-  gulp.src(['./public/css/**/*.css','!./public/css/semantic.min.css'])
+  gulp.src(['./public/css/**/*.css'])
     .pipe(concat('all.css'))
     .pipe(rename({suffix: '.min'}))   //rename压缩后的文件
     .pipe(autoprefixer({

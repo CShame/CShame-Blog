@@ -9,9 +9,63 @@
 
 	<div class="post-r">
 		<%- include('components/person-info') %>
+		<div id='postNav'>
+			<div class='heading'>目录</div>
+			<ul></ul>
+		</div>
 	</div>
 
 </div>
+
+<script>
+	$(document).ready(function () {
+		function isNumber(ch){
+			return ('0'<=ch && ch<='9') && typeof ch==='string';
+		}
+		// h1-h4都生成标题
+		$("#each-content").children().each(function (index, element) {
+			var tagName = $(this).get(0).tagName;
+
+			if (tagName.substr(0, 1) == "H" && isNumber(tagName.substr(1, 1)) && parseInt(tagName.substr(1, 1))<5) {
+				var contentH = $(this).html();
+				//添加id
+				var hID = "Title-" + tagName + "-" + index.toString();
+				$(this).attr("id", hID);
+				hID = "#" + hID;
+				//在目标DIV中添加 li
+				$("#postNav>ul").append("<li><a href='" + hID + "'>" + contentH + "</a></li>");
+			}
+		});
+		//在 DOM 中添加或删除元素，调用refresh
+		$('[data-spy="scroll"]').each(function () {
+			$(this).scrollspy('refresh')
+		})
+		//页面内平滑跳转
+		$("#postNav>ul a[href='#']").click(function () {
+			$('html,body').animate({scrollTop: 0}, 1000);
+			return false;
+		});
+		$("#postNav>ul a[href!='#']").click(function () {
+			var var_href = $(this).attr("href");
+			var len_href = var_href.length;
+			var has_mao = var_href.search("#");
+			if (has_mao == -1) return;
+			var index_mao = var_href.lastIndexOf("#");
+			var sub_href = var_href.substr(index_mao, len_href - index_mao);
+			$('html,body').animate({scrollTop: $(sub_href).offset().top}, 1000);
+			return false;
+		});
+		$(window).scroll(function(){
+			var t = document.documentElement.scrollTop || document.body.scrollTop;
+			if(t >= 380){
+				$("#postNav").css({"top":"75px","position":"fixed"});
+			}else{
+				$("#postNav").css({"top":"0","position":"relative"});
+			}
+
+		})
+	});
+</script>
 
 
 <%- include('footer') %>

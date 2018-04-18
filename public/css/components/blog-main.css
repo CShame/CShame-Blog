@@ -214,3 +214,10 @@
     color: #333;
     text-decoration: none;
 }
+
+#postNav >ul .active{
+    color: #21ba45;
+}
+#postNav >ul .active>a{
+    color: #21ba45;
+}

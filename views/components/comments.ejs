@@ -6,7 +6,7 @@
         <% comments.forEach(function (comment) { %>
           <div class="comment">
             <span class="avatar" style="width:35px;height:35px;">
-              <img src="/img/<%= comment.author.avatar %>">
+              <img src="/public/img/<%= comment.author.avatar %>">
             </span>
             <div class="content">
               <a class="author" href="/posts?author=<%= comment.author._id %>"><%= comment.author.name %></a>

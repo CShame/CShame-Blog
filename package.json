@@ -1,7 +1,7 @@
 {
   "name": "blog",
   "version": "1.0.0",
-  "description": "搭建多人博客,记录交流学习",
+  "description": "Happy Coding",
   "main": "index.js",
   "dependencies": {
     "config-lite": "^2.0.0",

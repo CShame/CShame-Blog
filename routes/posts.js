@@ -133,6 +133,16 @@ router.get('/create', checkLogin, function(req, res, next) {
   res.render('create');
 });
 
+// GET /posts/track?author=xxx 文章轨迹
+router.get('/track', checkLogin, function(req, res, next) {
+  var author = req.query.author;
+  PostModel.getTrackById(author).then(function(data){
+    res.render('track', {
+      tracks: data
+    });
+  }).catch(next);
+});
+
 // GET /posts/:postId 单独一篇的文章页
 router.get('/:postId', function(req, res, next) {
   var postId = req.params.postId;

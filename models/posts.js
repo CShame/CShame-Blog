@@ -132,6 +132,20 @@ module.exports = {
                     return CommentModel.delCommentsByPostId(postId);
                 }
             });
+    },
+
+    // 通过用户 id 获取改用户的博客记录
+    getTrackById:function (author) {
+        var query = {};
+        if (author) {
+            query.author = author;
+        }
+        return Post
+            .find(query)
+            .select({ '_id': 1, 'title': 1,'pv':1})
+            .sort({_id: -1})
+            .addCreatedAt()
+            .exec();
     }
 
 };

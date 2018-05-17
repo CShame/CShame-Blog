@@ -1,0 +1,13 @@
+<%- include('header') %>
+
+<section>
+    <% tracks.forEach(function (track) { %>
+        <p>
+            <%= track.title %>
+            <%= track.created_at %>
+            <%= track.pv %>
+        </p>
+    <% }) %>
+</section>
+
+<%- include('footer') %>

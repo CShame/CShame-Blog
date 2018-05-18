@@ -1,12 +1,28 @@
 <%- include('header') %>
 
-<section>
+<section class='track-page'>
     <% tracks.forEach(function (track) { %>
-        <p>
-            <%= track.title %>
-            <%= track.created_at %>
-            <%= track.pv %>
-        </p>
+    <h2><%= track.year %></h2>
+    <% track.list.forEach(function (eachMonth) { %>
+    <div class='each-month'>
+        <div class='timeline'>
+            <h3 class='month-heading'>
+                <%= eachMonth.month %>
+            </h3>
+            <div class='each-month-posts'>
+                <ul>
+                    <% eachMonth.list.forEach(function (post) { %>
+                    <li>
+                        <span><%= post.created_at.substr(5,5) %>&nbsp;</span>
+                        <a  href="/posts/<%= post._id %>"><%= post.title %>&nbsp;</a>
+                        <span>浏览(<%= post.pv %>)</span>
+                    </li>
+                    <% }) %>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <% }) %>
     <% }) %>
 </section>
 

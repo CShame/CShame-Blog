@@ -138,9 +138,72 @@ router.get('/track', checkLogin, function(req, res, next) {
   var author = req.query.author;
   PostModel.getTrackById(author).then(function(data){
     res.render('track', {
-      tracks: data
+      tracks: sortByTime(data)
     });
   }).catch(next);
+
+
+  //arrs = [{year:'2018',list:[{month:'04',list:[{文章1},{文章2}]}]}]
+  function sortByTime(data) {
+    var arrs = [];
+    data.forEach(function (each) {
+      var year = each.created_at.substr(0,4);
+      var month = transformToUs(each.created_at.substr(5,2));
+      var yearObj;
+      var monthObj;
+      if(arrs.length == 0){
+        yearObj = {year:year,list:[]};
+        monthObj = {month:month,list:[each]};
+        yearObj.list.push(monthObj);
+        arrs.push(yearObj);
+      }else{
+        for(var i=0;i<arrs.length;i++){
+          if(year == arrs[i].year){
+            for(var j=0; j<arrs[i].list.length;j++){
+              if(month == arrs[i].list[j].month){
+                arrs[i].list[j].list.push(each);
+                break;
+              }
+            }
+            //数组里没有这个月的数据，则新增一个
+            if(j == arrs[i].list.length){
+              monthObj = {month:month,list:[each]};
+              arrs[i].list.push(monthObj);
+            }
+            break;
+          }
+        }
+        //数组里没有这年的数据，则新增一个
+        if(i == arrs.length){
+          yearObj = {year:year,list:[]};
+          monthObj = {month:month,list:[each]};
+          yearObj.list.push(monthObj);
+          arrs.push(yearObj);
+        }
+      }
+    });
+    return arrs;
+  }
+
+  function transformToUs(month) {
+    var value;
+    switch (month){
+      case '01': value = 'January';break;
+      case '02': value = 'February';break;
+      case '03': value = 'March';break;
+      case '04': value = 'April';break;
+      case '05': value = 'May';break;
+      case '06': value = 'June';break;
+      case '07': value = 'July';break;
+      case '08': value = 'August';break;
+      case '09': value = 'September';break;
+      case '10': value = 'October';break;
+      case '11': value = 'November';break;
+      case '12': value = 'December';break;
+    }
+  return value;
+  }
+
 });
 
 // GET /posts/:postId 单独一篇的文章页

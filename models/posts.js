@@ -1,5 +1,6 @@
 var marked = require('marked');
 var Post = require('../lib/mongo').Post;
+var xss = require('xss');
 
 var CommentModel = require('./comments');
 
@@ -40,6 +41,30 @@ Post.plugin('contentToHtml', {
     }
 });
 
+var xssOptions = {
+    onTagAttr:function (tag, attr, value) {
+        if(tag == 'code' && attr=='class'){
+            return 'class= "' + value + '"';
+        }
+    }
+};
+
+
+Post.plugin('xssFilter',{
+    afterFind: function (posts) {
+        return posts.map(function (post) {
+            post.content = xss(post.content,xssOptions);
+            return post;
+        });
+    },
+    afterFindOne: function (post) {
+        if (post) {
+            post.content = xss(post.content,xssOptions);
+        }
+        return post;
+    }
+});
+
 module.exports = {
     // 创建一篇文章
     create: function create(post) {
@@ -54,6 +79,7 @@ module.exports = {
             .addCreatedAt()
             .addCommentsCount()
             .contentToHtml()
+            .xssFilter()
             .exec();
     },
 
@@ -77,6 +103,7 @@ module.exports = {
             .addCreatedAt()
             .addCommentsCount()
             .contentToHtml()
+            .xssFilter()
             .exec();
     },
 

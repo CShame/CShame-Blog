@@ -7,14 +7,15 @@ var checkLogin = require('../middlewares/check').checkLogin;
 
 //一些需要转译的字符,有问题
 function translationString(s) {
-  // return  s.replace(/</g,"&lt;")
-  //     .replace(/>/g,"&gt;")
-  //     .replace(/&/g,"&amp;")
-  //     .replace(/"/g,"&quot;")
-  //     .replace(/'/g,"&#x27;")
-  //     .replace(/\//g,"&#x2f;");
+  return  s.replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;")
+      .replace(/&/g,"&amp;")
+      .replace(/"/g,"&quot;")
+      .replace(/'/g,"&#x27;")
+      .replace(/\//g,"&#x2f;");
 
-      return s;
+      // return s.replace(/<script>/g,"&lt;script&gt;")
+      //     .replace(/<\/script>/g,"&lt;&#x2f;script&gt;");
 }
 
 // GET /posts 所有用户或者特定用户的文章页
@@ -92,8 +93,8 @@ router.get('/', function(req, res, next) {
 // POST /posts 发表一篇文章
 router.post('/', checkLogin, function(req, res, next) {
   var author = req.session.user._id;
-  var title = translationString(req.fields.title);
-  var content = translationString(req.fields.content);
+  var title = req.fields.title;// translationString(req.fields.title);
+  var content = req.fields.content; //translationString(req.fields.content);
 
   // 校验参数
   try {
@@ -217,7 +218,9 @@ router.get('/:postId', function(req, res, next) {
   ])
   .then(function (result) {
     var post = result[0];
-    var comments = result[1];   
+    // post.title = translationString(post.title);
+    // post.content = translationString(post.content);
+    var comments = result[1];
     if (!post) {
       throw new Error('该文章不存在');
     }
@@ -254,8 +257,8 @@ router.get('/:postId/edit', checkLogin, function(req, res, next) {
 router.post('/:postId/edit', checkLogin, function(req, res, next) {
   var postId = req.params.postId;
   var author = req.session.user._id;
-  var title = translationString(req.fields.title);
-  var content = translationString(req.fields.content);
+  var title = req.fields.title; // translationString(req.fields.title);
+  var content = req.fields.content; //translationString(req.fields.content);
 
   PostModel.updatePostById(postId, author, { title: title, content: content })
     .then(function () {

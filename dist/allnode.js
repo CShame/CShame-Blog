@@ -105,52 +105,79 @@ module.exports = parse;
 exports.parse = parse; // backword compatibility
 var marked = require('marked');
 var Comment = require('../lib/mongo').Comment;
+var xss = require('xss');
 
 // 将 comment 的 content 从 markdown 转换成 html
 Comment.plugin('contentToHtml', {
-  afterFind: function (comments) {
-    return comments.map(function (comment) {
-      comment.content = marked(comment.content);
-      return comment;
-    });
-  }
+    afterFind: function (comments) {
+        return comments.map(function (comment) {
+            comment.content = marked(comment.content);
+            return comment;
+        });
+    }
+});
+
+var xssOptions = {
+    onTagAttr: function (tag, attr, value) {
+        if (tag == 'code' && attr == 'class') {
+            return 'class= "' + value + '"';
+        }
+    }
+};
+
+
+Comment.plugin('xssFilter', {
+    afterFind: function (posts) {
+        return posts.map(function (post) {
+            post.content = xss(post.content, xssOptions);
+            return post;
+        });
+    },
+    afterFindOne: function (post) {
+        if (post) {
+            post.content = xss(post.content, xssOptions);
+        }
+        return post;
+    }
 });
 
 module.exports = {
-  // 创建一个留言
-  create: function create(comment) {
-    return Comment.create(comment).exec();
-  },
+    // 创建一个留言
+    create: function create(comment) {
+        return Comment.create(comment).exec();
+    },
 
-  // 通过用户 id 和留言 id 删除一个留言
-  delCommentById: function delCommentById(commentId, author) {
-    return Comment.remove({ author: author, _id: commentId }).exec();
-  },
+    // 通过用户 id 和留言 id 删除一个留言
+    delCommentById: function delCommentById(commentId, author) {
+        return Comment.remove({author: author, _id: commentId}).exec();
+    },
 
-  // 通过文章 id 删除该文章下所有留言
-  delCommentsByPostId: function delCommentsByPostId(postId) {
-    return Comment.remove({ postId: postId }).exec();
-  },
+    // 通过文章 id 删除该文章下所有留言
+    delCommentsByPostId: function delCommentsByPostId(postId) {
+        return Comment.remove({postId: postId}).exec();
+    },
 
-  // 通过文章 id 获取该文章下所有留言，按留言创建时间升序
-  getComments: function getComments(postId) {
-    return Comment
-      .find({ postId: postId })
-      .populate({ path: 'author', model: 'User' })
-      .sort({ _id: 1 })
-      .addCreatedAt()
-      .contentToHtml()
-      .exec();
-  },
+    // 通过文章 id 获取该文章下所有留言，按留言创建时间升序
+    getComments: function getComments(postId) {
+        return Comment
+            .find({postId: postId})
+            .populate({path: 'author', model: 'User'})
+            .sort({_id: 1})
+            .addCreatedAt()
+            .contentToHtml()
+            .xssFilter()
+            .exec();
+    },
 
-  // 通过文章 id 获取该文章下留言数
-  getCommentsCount: function getCommentsCount(postId) {
-    return Comment.count({ postId: postId }).exec();
-  }
+    // 通过文章 id 获取该文章下留言数
+    getCommentsCount: function getCommentsCount(postId) {
+        return Comment.count({postId: postId}).exec();
+    }
 };
 
 var marked = require('marked');
 var Post = require('../lib/mongo').Post;
+var xss = require('xss');
 
 var CommentModel = require('./comments');
 
@@ -191,6 +218,30 @@ Post.plugin('contentToHtml', {
     }
 });
 
+var xssOptions = {
+    onTagAttr:function (tag, attr, value) {
+        if(tag == 'code' && attr=='class'){
+            return 'class= "' + value + '"';
+        }
+    }
+};
+
+
+Post.plugin('xssFilter',{
+    afterFind: function (posts) {
+        return posts.map(function (post) {
+            post.content = xss(post.content,xssOptions);
+            return post;
+        });
+    },
+    afterFindOne: function (post) {
+        if (post) {
+            post.content = xss(post.content,xssOptions);
+        }
+        return post;
+    }
+});
+
 module.exports = {
     // 创建一篇文章
     create: function create(post) {
@@ -205,6 +256,7 @@ module.exports = {
             .addCreatedAt()
             .addCommentsCount()
             .contentToHtml()
+            .xssFilter()
             .exec();
     },
 
@@ -228,6 +280,7 @@ module.exports = {
             .addCreatedAt()
             .addCommentsCount()
             .contentToHtml()
+            .xssFilter()
             .exec();
     },
 
@@ -343,19 +396,6 @@ var PostModel = require('../models/posts');
 var CommentModel = require('../models/comments');
 var checkLogin = require('../middlewares/check').checkLogin;
 
-//一些需要转译的字符,有问题
-function translationString(s) {
-  return  s.replace(/</g,"&lt;")
-      .replace(/>/g,"&gt;")
-      .replace(/&/g,"&amp;")
-      .replace(/"/g,"&quot;")
-      .replace(/'/g,"&#x27;")
-      .replace(/\//g,"&#x2f;");
-
-      // return s.replace(/<script>/g,"&lt;script&gt;")
-      //     .replace(/<\/script>/g,"&lt;&#x2f;script&gt;");
-}
-
 // GET /posts 所有用户或者特定用户的文章页
 //   eg: GET /posts?author=xxx
 router.get('/', function(req, res, next) {
@@ -431,8 +471,8 @@ router.get('/', function(req, res, next) {
 // POST /posts 发表一篇文章
 router.post('/', checkLogin, function(req, res, next) {
   var author = req.session.user._id;
-  var title = req.fields.title;// translationString(req.fields.title);
-  var content = req.fields.content; //translationString(req.fields.content);
+  var title = req.fields.title;
+  var content = req.fields.content;
 
   // 校验参数
   try {
@@ -556,8 +596,6 @@ router.get('/:postId', function(req, res, next) {
   ])
   .then(function (result) {
     var post = result[0];
-    post.title = translationString(post.title);
-    post.content = translationString(post.content);
     var comments = result[1];
     if (!post) {
       throw new Error('该文章不存在');
@@ -595,8 +633,8 @@ router.get('/:postId/edit', checkLogin, function(req, res, next) {
 router.post('/:postId/edit', checkLogin, function(req, res, next) {
   var postId = req.params.postId;
   var author = req.session.user._id;
-  var title = translationString(req.fields.title);
-  var content = translationString(req.fields.content);
+  var title = req.fields.title;
+  var content = req.fields.content;
 
   PostModel.updatePostById(postId, author, { title: title, content: content })
     .then(function () {

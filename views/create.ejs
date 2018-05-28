@@ -1,26 +1,149 @@
 <%- include('header') %>
 
 <div class="create-page">
-  <div class="create-page-l">
-    <a class="avatar avatar-link" href="/posts?author=<%= user._id %>"
-     data-title="<%= user.name %> | <%= ({m: '男', f: '女', x: '保密'})[user.gender] %>"
-     data-content="<%= user.bio %>">
-     <img class="avatar" src="/public/img/<%= user.avatar %>">
-   </a>
-  </div>
-  <div class="create-page-r">
-    <form class="ui form segment" method="post" action="/posts">
-      <div class="field required">
-        <label>标题</label>
-        <input type="text" name="title">
-      </div>
-      <div class="field required">
-        <label>内容</label>
-        <textarea name="content" rows="15"></textarea>
-      </div>
-      <input type="submit" class="ui button" value="发布">
-    </form>
-  </div>
+    <div class="create-page-l">
+        <a class="avatar avatar-link" href="/posts?author=<%= user._id %>"
+           data-title="<%= user.name %> | <%= ({m: '男', f: '女', x: '保密'})[user.gender] %>"
+           data-content="<%= user.bio %>">
+            <img class="avatar" src="/public/img/<%= user.avatar %>">
+        </a>
+    </div>
+    <div class="create-page-r">
+        <form class="ui form segment" method="post" action="/posts">
+            <div class="field required">
+                <label>标题</label>
+                <input type="text" name="title">
+            </div>
+            <div class="field required">
+                <label>内容</label>
+                <div class='editor-toolbar'>
+                    <ul>
+                        <li class="wmd-button" id="wmd-bold-button" title="加粗 <strong>">
+                            <a><i class='bold icon'></i></a>
+                        </li>
+                        <li class="wmd-button" id="wmd-italic-button" title="斜体 <em>">
+                            <a><i class='italic icon'></i></a>
+                        </li>
+                        <li class="divider" id="wmd-spacer1"></li>
+                        <li class="wmd-button" id="wmd-link-button" title="链接 <a>">
+                            <a><i class='linkify icon'></i></a>
+                        </li>
+                        <li class="wmd-button" id="wmd-quote-button" title="引用 <blockquote>">
+                            <a><i class='quote left icon'></i></a>
+                        </li>
+                        <li class="wmd-button" id="wmd-code-button" title="代码 <pre><code>">
+                            <a><i class='file code outline icon'></i></a>
+                        </li>
+                        <li class="wmd-button" id="wmd-image-button" title="图片 <img>">
+                            <a><i class='image icon'></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <textarea name="content" id='myEditor' rows="15"></textarea>
+            </div>
+            <input type="submit" class="ui button" value="发布">
+        </form>
+    </div>
 </div>
+
+<div class="ui modal">
+    <div class="header">插入链接</div>
+    <div class="content ui input">
+        <!--<input type="text" id='hyperlink' placeholder="请输入链接..." style='width: 100%;'>-->
+    </div>
+    <div class="actions">
+        <div class="ui negative button">取消</div>
+        <div class="ui positive button" id='addHyperlink'>确定</div>
+    </div>
+</div>
+
+<script>
+    $('#wmd-bold-button').on('click', function(){
+        addContent('**加粗文字**',true,2);
+    });
+    $('#wmd-italic-button').on('click', function(){
+        addContent('*斜体文字*',true,1);
+    });
+
+    //添加超链接
+    $('#wmd-link-button').on('click', function(){
+        var html = '<input type="text" id="hyperlink" placeholder="请输入链接..." style="width: 100%;">'
+        $('.modal').find('.header').html('插入链接');
+        console.log(html);
+        $('.modal').find('.content').append(html);
+        $('.ui.modal').modal('show');
+    });
+    $('#addHyperlink').on('click', function(){
+        var text = '[链接描述](';
+        text += $('#hyperlink').val();
+        text += ')';
+        addContent(text,true);
+    });
+
+    $('#wmd-quote-button').on('click', function(){
+        addContent('> ',true);
+    });
+
+    $('#wmd-code-button').on('click', function(){
+        addContent('``` \r\n请输入代码\r\n```',true,6);
+    });
+
+    $('#wmd-image-button').on('click', function(){
+//        var html = '<input type="text" id="hyperlink" placeholder="请输入链接..." style="width: 100%;">'
+//        $('.modal').find('.header').html('插入图片');
+//        console.log(html);
+//        $('.modal').find('.content').append(html);
+//        $('.ui.modal').modal('show');
+    });
+
+
+
+    /**
+     * data [string] 要加的内容
+     * addEnter [bool] 是否添加回车
+     * moveForward [int] 光标向前移动几个位置
+     * */
+    function addContent(data,addEnter,moveForward) {
+        if(addEnter === true){
+            data = '\r\n\r\n' + data;
+            data = data + '\r\n\r\n';
+        }
+        moveForward = moveForward?moveForward:0;
+        var txtArea = $('#myEditor')[0];
+        var content = txtArea.value;
+        var start = txtArea.selectionStart; //初始位置
+        txtArea.value = content.substring(0, txtArea.selectionStart) + data + content.substring(txtArea.selectionEnd, content.length);
+        var position = start + data.length - 6 -moveForward;
+        $('#myEditor').focus();
+//      txtArea.setSelectionRange(position, position);
+        setCursorPosition(txtArea,position)
+    }
+
+    /*
+     * 设置输入域(input/textarea)光标的位置
+     * @param {HTMLInputElement/HTMLTextAreaElement} elem
+     * @param {Number} index
+     */
+    function setCursorPosition(elem, index) {
+        var val = elem.value
+        var len = val.length
+
+        // 超过文本长度直接返回
+        if (len < index) return
+        setTimeout(function() {
+            elem.focus()
+            if (elem.setSelectionRange) { // 标准浏览器
+                elem.setSelectionRange(index, index)
+            } else { // IE9-
+                var range = elem.createTextRange()
+                range.moveStart("character", -len)
+                range.moveEnd("character", -len)
+                range.moveStart("character", index)
+                range.moveEnd("character", 0)
+                range.select()
+            }
+        }, 10)
+    }
+</script>
 
 <%- include('footer') %>

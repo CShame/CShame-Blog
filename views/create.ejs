@@ -58,68 +58,88 @@
 </div>
 
 <script>
-    $('#wmd-bold-button').on('click', function(){
-        addContent('**加粗文字**',true,2);
+    $('#wmd-bold-button').on('click', function () {
+        addContent('**加粗文字**', true, 2);
     });
-    $('#wmd-italic-button').on('click', function(){
-        addContent('*斜体文字*',true,1);
+    $('#wmd-italic-button').on('click', function () {
+        addContent('*斜体文字*', true, 1);
     });
 
     //添加超链接
-    $('#wmd-link-button').on('click', function(){
-        var html = '<input type="text" id="hyperlink" placeholder="请输入链接..." style="width: 100%;">'
+    $('#wmd-link-button').on('click', function () {
+        var html = '<input type="text" id="hyperlink" placeholder="请输入链接..." style="width: 100%;">';
         $('.modal').find('.header').html('插入链接');
-        console.log(html);
+        $('.modal').find('.content').html('');
         $('.modal').find('.content').append(html);
         $('.ui.modal').modal('show');
-    });
-    $('#addHyperlink').on('click', function(){
-        var text = '[链接描述](';
-        text += $('#hyperlink').val();
-        text += ')';
-        addContent(text,true);
+
+        $('#addHyperlink').on('click', function () {
+            var text = '[链接描述](';
+            text += $('#hyperlink').val();
+            text += ')';
+            addContent(text, true);
+            $(".addHyperlink").unbind('click');
+        });
     });
 
-    $('#wmd-quote-button').on('click', function(){
-        addContent('> ',true);
+
+    //引用
+    $('#wmd-quote-button').on('click', function () {
+        addContent('> ', true);
     });
 
-    $('#wmd-code-button').on('click', function(){
-        addContent('``` \r\n请输入代码\r\n```',true,6);
+    //代码块
+    $('#wmd-code-button').on('click', function () {
+        addContent('``` \r\n请输入代码\r\n```', true, 6);
     });
 
-    $('#wmd-image-button').on('click', function(){
-//        var html = '<input type="text" id="hyperlink" placeholder="请输入链接..." style="width: 100%;">'
-//        $('.modal').find('.header').html('插入图片');
-//        console.log(html);
-//        $('.modal').find('.content').append(html);
-//        $('.ui.modal').modal('show');
-    });
+    //图片
+    $('#wmd-image-button').on('click', function () {
+        var html = '<input type="file" id="editorUpload" name="image" style="width: 100%;background-color: #eee">'
+                + '<button class="ui teal button" style="position: absolute;left: 30px;top: 26px;width: 78px;padding: 10px 0;">选择文件</button>';
+        $('.modal').find('.header').html('插入图片');
+        $('.modal').find('.content').html('');
+        $('.modal').find('.content').append(html);
+        $('.ui.modal').modal('show');
 
+        $('.teal').on('click', function () {
+            $('#editorUpload').click();
+            $(".teal").unbind('click');
+        });
+
+        $('#addHyperlink').on('click', function () {
+            var text = '![图片描述](';
+            text += $('#editorUpload').val();
+            text += ')';
+            addContent(text, true);
+            $(".addHyperlink").unbind('click');
+        });
+    });
 
 
     /**
-     * data [string] 要加的内容
-     * addEnter [bool] 是否添加回车
-     * moveForward [int] 光标向前移动几个位置
+     * 自动在textarea中添加相应的内容
+     * @param {string} data 要加的内容
+     * @param {bool} addEnter  是否添加回车
+     * @param {int} moveForward 光标向前移动几个位置
      * */
-    function addContent(data,addEnter,moveForward) {
-        if(addEnter === true){
+    function addContent(data, addEnter, moveForward) {
+        if (addEnter === true) {
             data = '\r\n\r\n' + data;
             data = data + '\r\n\r\n';
         }
-        moveForward = moveForward?moveForward:0;
+        moveForward = moveForward ? moveForward : 0;
         var txtArea = $('#myEditor')[0];
         var content = txtArea.value;
         var start = txtArea.selectionStart; //初始位置
         txtArea.value = content.substring(0, txtArea.selectionStart) + data + content.substring(txtArea.selectionEnd, content.length);
-        var position = start + data.length - 6 -moveForward;
+        var position = start + data.length - 6 - moveForward;
         $('#myEditor').focus();
 //      txtArea.setSelectionRange(position, position);
-        setCursorPosition(txtArea,position)
+        setCursorPosition(txtArea, position)
     }
 
-    /*
+    /**
      * 设置输入域(input/textarea)光标的位置
      * @param {HTMLInputElement/HTMLTextAreaElement} elem
      * @param {Number} index
@@ -130,7 +150,7 @@
 
         // 超过文本长度直接返回
         if (len < index) return
-        setTimeout(function() {
+        setTimeout(function () {
             elem.focus()
             if (elem.setSelectionRange) { // 标准浏览器
                 elem.setSelectionRange(index, index)

@@ -4,6 +4,7 @@
     max-width: 800px;
     border-radius: 5px;
     padding: 10px;
+    min-height: 600px;
 }
 
 .track-page .each-month{

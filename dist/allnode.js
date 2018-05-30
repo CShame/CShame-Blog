@@ -390,6 +390,7 @@ module.exports = function (app) {
 };
 
 var express = require('express');
+var path = require('path');
 var router = express.Router();
 
 var PostModel = require('../models/posts');
@@ -511,6 +512,17 @@ router.post('/', checkLogin, function(req, res, next) {
 router.get('/create', checkLogin, function(req, res, next) {
   res.render('create');
 });
+
+// GET /posts/postImgUpload 上传图片
+router.post('/postImgUpload', checkLogin, function(req, res, next) {
+  // console.log(JSON.stringify(req.files));
+  var url = '/public/img/' + req.files.editorImg.path.split(path.sep).pop();
+  res.json({
+    code : 200,
+    data : url
+  })
+});
+
 
 // GET /posts/track?author=xxx 文章轨迹
 router.get('/track', checkLogin, function(req, res, next) {

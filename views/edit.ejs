@@ -16,11 +16,49 @@
       </div>
       <div class="field required">
         <label>内容</label>
+        <div class='editor-toolbar'>
+          <ul>
+            <li class="wmd-button" id="wmd-bold-button" title="加粗 <strong>">
+              <a><i class='bold icon'></i></a>
+            </li>
+            <li class="wmd-button" id="wmd-italic-button" title="斜体 <em>">
+              <a><i class='italic icon'></i></a>
+            </li>
+            <li class="divider" id="wmd-spacer1"></li>
+            <li class="wmd-button" id="wmd-link-button" title="链接 <a>">
+              <a><i class='linkify icon'></i></a>
+            </li>
+            <li class="wmd-button" id="wmd-quote-button" title="引用 <blockquote>">
+              <a><i class='quote left icon'></i></a>
+            </li>
+            <li class="wmd-button" id="wmd-code-button" title="代码 <pre><code>">
+              <a><i class='file code outline icon'></i></a>
+            </li>
+            <li class="wmd-button" id="wmd-image-button" title="图片 <img>">
+              <a><i class='image icon'></i></a>
+            </li>
+          </ul>
+        </div>
         <textarea name="content" rows="15"><%= post.content %></textarea>
       </div>
       <input type="submit" class="ui button" value="发布">
     </form>
   </div>
 </div>
+
+<div class="ui modal">
+  <div class="header">
+    <!--头部，待插入-->
+  </div>
+  <div class="content ui input">
+    <!--内容，待插入-->
+  </div>
+  <div class="actions">
+    <div class="ui negative button">取消</div>
+    <div class="ui positive button" id='addHyperlink'>确定</div>
+  </div>
+</div>
+
+<script src="/public/js/components/editorToolbar.js"></script>
 
 <%- include('footer') %>

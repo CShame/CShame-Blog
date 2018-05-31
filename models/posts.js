@@ -46,6 +46,9 @@ var xssOptions = {
         if(tag == 'code' && attr=='class'){
             return 'class= "' + value + '"';
         }
+        if(tag == 'a' && attr == 'href'){
+            return 'href="' + value + '"';
+        }
     }
 };
 

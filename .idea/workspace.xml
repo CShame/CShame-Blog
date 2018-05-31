@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f782f8e6-f032-45cc-9188-17bd6744e1da" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.js" afterPath="$PROJECT_DIR$/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/error.log" afterPath="$PROJECT_DIR$/logs/error.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/success.log" afterPath="$PROJECT_DIR$/logs/success.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/posts.js" afterPath="$PROJECT_DIR$/models/posts.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/posts.js" afterPath="$PROJECT_DIR$/routes/posts.js" />
     </list>
     <ignored path="CShame-Blog.iws" />
@@ -32,8 +32,8 @@
       <file leaf-file-name="posts.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/posts.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="132" column="3" selection-start-line="132" selection-start-column="3" selection-end-line="132" selection-end-column="3" />
+            <state relative-caret-position="201">
+              <caret line="232" column="32" selection-start-line="232" selection-start-column="32" selection-end-line="232" selection-end-column="32" />
               <folding>
                 <element signature="e#351#1900#0" expanded="false" />
                 <element signature="e#677#862#0" expanded="false" />
@@ -45,23 +45,11 @@
                 <element signature="e#3158#5179#0" expanded="false" />
                 <element signature="e#3426#4586#0" expanded="false" />
                 <element signature="e#4620#5176#0" expanded="false" />
-                <element signature="e#5262#5785#0" expanded="false" />
                 <element signature="e#5313#5452#0" expanded="false" />
-                <element signature="e#5887#6426#0" expanded="false" />
-                <element signature="e#7008#7260#0" expanded="false" />
-                <element signature="e#7371#7731#0" expanded="false" />
-                <element signature="e#7876#8142#0" expanded="false" />
+                <element signature="e#6761#7013#0" expanded="false" />
+                <element signature="e#7124#7484#0" expanded="false" />
+                <element signature="e#7629#7895#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="13" column="36" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -69,7 +57,7 @@
       <file leaf-file-name="posts.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/posts.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
+            <state relative-caret-position="759">
               <caret line="67" column="5" selection-start-line="67" selection-start-column="5" selection-end-line="67" selection-end-column="5" />
               <folding>
                 <element signature="e#205#770#0" expanded="false" />
@@ -92,8 +80,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="421">
-              <caret line="54" column="4" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="4" />
+            <state relative-caret-position="299">
+              <caret line="107" column="8" selection-start-line="107" selection-start-column="8" selection-end-line="107" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -102,7 +90,7 @@
       <file leaf-file-name="create.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/create.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
+            <state relative-caret-position="1150">
               <caret line="50" column="21" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
               <folding>
                 <marker date="1527586321574" expanded="true" signature="2991:3003" ph="..." />
@@ -119,7 +107,7 @@
       <file leaf-file-name="editorToolbar.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/components/editorToolbar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="621">
+            <state relative-caret-position="1081">
               <caret line="111" column="34" selection-start-line="111" selection-start-column="34" selection-end-line="111" selection-end-column="34" />
               <folding>
                 <element signature="e#256#750#0" expanded="false" />
@@ -183,7 +171,6 @@
         <option value="$PROJECT_DIR$/views/header.ejs" />
         <option value="$PROJECT_DIR$/models/comments.js" />
         <option value="$PROJECT_DIR$/lib/mongo.js" />
-        <option value="$PROJECT_DIR$/index.js" />
         <option value="$PROJECT_DIR$/routes/signup.js" />
         <option value="$PROJECT_DIR$/public/css/page/create.css" />
         <option value="$PROJECT_DIR$/views/components/nav-setting.ejs" />
@@ -196,6 +183,7 @@
         <option value="$PROJECT_DIR$/views/edit.ejs" />
         <option value="$PROJECT_DIR$/public/js/components/editorToolbar.js" />
         <option value="$PROJECT_DIR$/models/posts.js" />
+        <option value="$PROJECT_DIR$/index.js" />
         <option value="$PROJECT_DIR$/routes/posts.js" />
       </list>
     </option>
@@ -267,7 +255,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -356,6 +343,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="logs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CShame-Blog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CShame-Blog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -363,6 +364,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -468,12 +470,13 @@
       <workItem from="1526865015831" duration="31088000" />
       <workItem from="1527474651861" duration="23791000" />
       <workItem from="1527562212149" duration="10359000" />
-      <workItem from="1527745857650" duration="2638000" />
+      <workItem from="1527745857650" duration="3256000" />
+      <workItem from="1527749919326" duration="2323000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="166859000" />
+    <option name="totallyTimeSpent" value="169800000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1932" height="1066" extended-state="1" />
@@ -518,20 +521,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/views/components/person-info.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/github-markdown.css" />
     <entry file="file://$PROJECT_DIR$/public/lib/prism/prism.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -563,14 +552,6 @@
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Documents/WeChat Files/CShame228/Files/common_head.jsp" />
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" column="32" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/lib/semantic.min.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="301">
@@ -763,7 +744,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -778,7 +758,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -786,7 +765,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -801,7 +779,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2001">
           <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -809,7 +786,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
           <caret line="9" column="36" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -823,7 +799,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/components/editorToolbar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
+        <state relative-caret-position="1081">
           <caret line="111" column="34" selection-start-line="111" selection-start-column="34" selection-end-line="111" selection-end-column="34" />
           <folding>
             <element signature="e#256#750#0" expanded="false" />
@@ -837,17 +813,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="54" column="4" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/create.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
+        <state relative-caret-position="1150">
           <caret line="50" column="21" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
           <folding>
             <marker date="1527586321574" expanded="true" signature="2991:3003" ph="..." />
@@ -864,21 +832,44 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="268">
           <caret line="633" column="52" selection-start-line="633" selection-start-column="52" selection-end-line="633" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="13" column="36" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
+        <state relative-caret-position="368">
+          <caret line="16" column="2" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/express/lib/application.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="617" column="40" selection-start-line="617" selection-start-column="40" selection-end-line="617" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logs/error.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="57" column="1712" selection-start-line="57" selection-start-column="1712" selection-end-line="57" selection-end-column="1712" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/posts.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
+        <state relative-caret-position="759">
           <caret line="67" column="5" selection-start-line="67" selection-start-column="5" selection-end-line="67" selection-end-column="5" />
           <folding>
             <element signature="e#205#770#0" expanded="false" />
@@ -897,10 +888,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="107" column="8" selection-start-line="107" selection-start-column="8" selection-end-line="107" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/routes/posts.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="132" column="3" selection-start-line="132" selection-start-column="3" selection-end-line="132" selection-end-column="3" />
+        <state relative-caret-position="201">
+          <caret line="232" column="32" selection-start-line="232" selection-start-column="32" selection-end-line="232" selection-end-column="32" />
           <folding>
             <element signature="e#351#1900#0" expanded="false" />
             <element signature="e#677#862#0" expanded="false" />
@@ -912,12 +911,10 @@
             <element signature="e#3158#5179#0" expanded="false" />
             <element signature="e#3426#4586#0" expanded="false" />
             <element signature="e#4620#5176#0" expanded="false" />
-            <element signature="e#5262#5785#0" expanded="false" />
             <element signature="e#5313#5452#0" expanded="false" />
-            <element signature="e#5887#6426#0" expanded="false" />
-            <element signature="e#7008#7260#0" expanded="false" />
-            <element signature="e#7371#7731#0" expanded="false" />
-            <element signature="e#7876#8142#0" expanded="false" />
+            <element signature="e#6761#7013#0" expanded="false" />
+            <element signature="e#7124#7484#0" expanded="false" />
+            <element signature="e#7629#7895#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -227,11 +227,7 @@ router.get('/:postId', function(req, res, next) {
       comments: comments
     });
   })
-  .catch(function (err) {
-    if(err.message == '该文章不存在'){
-      res.status(404).render('404');
-    }
-  });
+  .catch(next);
 });
 
 // GET /posts/:postId/edit 更新文章页
@@ -251,13 +247,7 @@ router.get('/:postId/edit', checkLogin, function(req, res, next) {
         post: post
       });
     })
-    .catch(function (err) {
-      if(err.message == '该文章不存在'){
-        res.status(404).render('404');
-      }else if(err.message == '权限不足'){
-        next();
-      }
-    });
+    .catch(next);
 });
 
 // POST /posts/:postId/edit 更新一篇文章

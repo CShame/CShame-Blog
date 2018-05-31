@@ -103,9 +103,11 @@ app.use(expressWinston.errorLogger({
 
 // error page
 app.use(function (err, req, res, next) {
-  res.render('error', {
-    error: err
-  });
+  if(err.message == '该文章不存在'){
+    res.status(404).render('404');
+  }else{
+    res.render('error', {error: err});
+  }
 });
 
 // 监听端口，启动程序

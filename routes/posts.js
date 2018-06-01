@@ -17,6 +17,9 @@ router.get('/', function(req, res, next) {
 
   if(req.query.page != null){
     page = req.query.page;
+    if(page<1){
+      throw new Error('该文章不存在');
+    }
     presize = (page-1) * pagesize;
   }
 

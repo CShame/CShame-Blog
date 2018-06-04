@@ -39,8 +39,8 @@ $('#wmd-code-button').on('click', function () {
 
 //图片
 $('#wmd-image-button').on('click', function () {
-    var html = '<input type="file" id="editorUpload" style="width: 100%;background-color: #eee">'
-        + '<button class="ui teal button" style="position: absolute;left: 30px;top: 26px;width: 78px;padding: 10px 0;">选择文件</button>';
+    var html = '<div style="position:relative;"><input type="file" id="editorUpload" accept="image/gif,image/jpeg,image/jpg,image/png" style="width: 100%;background-color: #eee">'
+        + '<button class="ui teal button" style="position: absolute;left: 10px;top: 5px;width: 78px;padding: 10px 0;">选择文件</button></div>';
     $('.modal').find('.header').html('插入图片');
     $('.modal').find('.content').html('');
     $('.modal').find('.content').append(html);

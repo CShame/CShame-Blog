@@ -59,11 +59,11 @@
       <%
       //pageCount -page 大于2的时候显示...,小于等于6的时候点击加1，大于等于6的时候点击加5
       %>
-     <% if(pageCount - page > 2 && pageCount - page <= 6) { %>
+     <% if(pageCount > 5 && pageCount - page > 2 && pageCount - page <= 6) { %>
         <a class="icon item" href="posts?page=<%= (page+1)+author %>">
             <i class="ellipsis horizontal icon"></i>
         </a>
-     <% }else if(pageCount - page > 6){ %>
+     <% }else if(pageCount > 5 && pageCount - page > 6){ %>
         <a class="icon item" href="posts?page=<%= (page+5)+author %>">
             <i class="ellipsis horizontal icon"></i>
         </a>

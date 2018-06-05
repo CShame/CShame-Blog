@@ -138,7 +138,8 @@ router.post('/postImgUpload', checkLogin, function(req, res, next) {
 
 // GET /posts/track?author=xxx 文章轨迹
 router.get('/track', checkLogin, function(req, res, next) {
-  var author = req.query.author;
+  // var author = req.query.author;
+  var author = req.session.user._id;
   PostModel.getTrackById(author).then(function(data){
     res.render('track', {
       tracks: sortByTime(data)

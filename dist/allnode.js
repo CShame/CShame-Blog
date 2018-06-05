@@ -223,6 +223,9 @@ var xssOptions = {
         if(tag == 'code' && attr=='class'){
             return 'class= "' + value + '"';
         }
+        if(tag == 'a' && attr == 'href'){
+            return 'href="' + value + '"';
+        }
     }
 };
 
@@ -408,6 +411,9 @@ router.get('/', function(req, res, next) {
 
   if(req.query.page != null){
     page = req.query.page;
+    if(page<1){
+      throw new Error('该文章不存在');
+    }
     presize = (page-1) * pagesize;
   }
 
@@ -526,7 +532,8 @@ router.post('/postImgUpload', checkLogin, function(req, res, next) {
 
 // GET /posts/track?author=xxx 文章轨迹
 router.get('/track', checkLogin, function(req, res, next) {
-  var author = req.query.author;
+  // var author = req.query.author;
+  var author = req.session.user._id;
   PostModel.getTrackById(author).then(function(data){
     res.render('track', {
       tracks: sortByTime(data)

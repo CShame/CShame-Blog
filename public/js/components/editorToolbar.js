@@ -3,10 +3,10 @@
  * */
 
 $('#wmd-bold-button').on('click', function () {
-    addContent('**加粗文字**', true, 2);
+    addContent('**加粗文字**', true, 2,4);
 });
 $('#wmd-italic-button').on('click', function () {
-    addContent('*斜体文字*', true, 1);
+    addContent('*斜体文字*', true, 1,4);
 });
 
 //添加超链接
@@ -22,19 +22,19 @@ $('#wmd-link-button').on('click', function () {
         text += $('#hyperlink').val();
         text += ')';
         addContent(text, true);
-        $(".addHyperlink").unbind('click');
+        $("#addHyperlink").unbind('click');
     });
 });
 
 
 //引用
 $('#wmd-quote-button').on('click', function () {
-    addContent('> 请输入应用内容', true);
+    addContent('> 请输入应用内容', true,0,7);
 });
 
 //代码块
 $('#wmd-code-button').on('click', function () {
-    addContent('``` \r\n请输入代码\r\n```', true, 6);
+    addContent('``` \r\n请输入代码\r\n```', true, 6,5);
 });
 
 //图片
@@ -63,8 +63,9 @@ $('#wmd-image-button').on('click', function () {
  * @param {string} data 要加的内容
  * @param {bool} addEnter  是否添加回车
  * @param {int} moveForward 光标向前移动几个位置
+ * @param {int} selectedTextLength 选中文本的长度
  * */
-function addContent(data, addEnter, moveForward) {
+function addContent(data, addEnter, moveForward,selectedTextLength) {
     if (addEnter === true) {
         data = '\r\n\r\n' + data;
         data = data + '\r\n\r\n';
@@ -76,8 +77,10 @@ function addContent(data, addEnter, moveForward) {
     txtArea.value = content.substring(0, txtArea.selectionStart) + data + content.substring(txtArea.selectionEnd, content.length);
     var position = start + data.length - 6 - moveForward;
     $('#myEditor').focus();
-//      txtArea.setSelectionRange(position, position);
-    setCursorPosition(txtArea, position)
+//     setCursorPosition(txtArea, position);
+    if(selectedTextLength){
+        setTextSelected(txtArea,position-selectedTextLength,position);
+    }
 }
 
 /**
@@ -92,18 +95,41 @@ function setCursorPosition(elem, index) {
     // 超过文本长度直接返回
     if (len < index) return
     setTimeout(function () {
-        elem.focus()
+        elem.focus();
         if (elem.setSelectionRange) { // 标准浏览器
             elem.setSelectionRange(index, index)
         } else { // IE9-
-            var range = elem.createTextRange()
-            range.moveStart("character", -len)
-            range.moveEnd("character", -len)
-            range.moveStart("character", index)
-            range.moveEnd("character", 0)
+            var range = elem.createTextRange();
+            range.moveStart("character", -len);
+            range.moveEnd("character", -len);
+            range.moveStart("character", index);
+            range.moveEnd("character", 0);
             range.select()
         }
     }, 10)
+}
+
+/**
+ * 设置文本选中高亮
+ * @param {HTMLInputElement/HTMLTextAreaElement} inputDom
+ * @param {Number} startIndex 开始位置
+ * @param {Number} endIndex 结束位置
+ * */
+function setTextSelected(inputDom, startIndex, endIndex)
+{
+    if (inputDom.setSelectionRange)
+    {
+        inputDom.setSelectionRange(startIndex, endIndex);
+    }
+    else if (inputDom.createTextRange) //IE
+    {
+        var range = inputDom.createTextRange();
+        range.collapse(true);
+        range.moveStart('character', startIndex);
+        range.moveEnd('character', endIndex - startIndex-1);
+        range.select();
+    }
+    inputDom.focus();
 }
 
 /**

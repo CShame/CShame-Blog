@@ -80,7 +80,7 @@
 }
 
 @media screen and (max-width: 410px){
-  #navFixed .smallBlogImg{
+  #navFixed .smallSearchBox{
     display: none;
   }
 }
@@ -88,6 +88,9 @@
 
 @media screen and (max-width: 1200px) {
   .nav #nav-describe{
+    display: none;
+  }
+  #navFixed .smallSearchBox{
     display: none;
   }
 }

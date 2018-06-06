@@ -37,9 +37,12 @@
             <li class="wmd-button" id="wmd-image-button" title="图片 <img>">
               <a><i class='image icon'></i></a>
             </li>
+            <li class="wmd-button" id="wmd-table-button" title="表格 <table>">
+              <a><i class='table icon'></i></a>
+            </li>
           </ul>
         </div>
-        <textarea name="content" rows="15"><%= post.content %></textarea>
+        <textarea name="content" id='myEditor' rows="15"><%= post.content %></textarea>
       </div>
       <input type="submit" class="ui button" value="发布">
     </form>

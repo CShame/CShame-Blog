@@ -57,6 +57,14 @@ $('#wmd-image-button').on('click', function () {
     });
 });
 
+//表格
+$('#wmd-table-button').on('click', function () {
+    var content = `
+列1 | 列2 | 列3 
+  - | - | -
+请输入内容 | 请输入内容 | 请输入内容`;
+    addContent(content, true);
+});
 
 /**
  * 自动在textarea中添加相应的内容

@@ -2,24 +2,20 @@
 .hot-blog{
 	width: 300px;
 	background: #fff;
+    box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
+    overflow: hidden;
 }
 
 .hot-blog .hot-blog-title{
-    height: 50px;
-    border-bottom: solid 1px #ebebeb;
-    position: relative;
-    padding: 0 20px;
-    line-height: 50px;
-    font-size: 16px;
-    color: #333;
-    font-weight: 600;
-    font-family: 'Microsoft YaHei';
-    background: #d9dee2;
+    margin-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 .hot-blog .hot-blog-list{
     padding: 0 20px 10px;
     margin-top: 0;
+    border-top: 2px solid #00B5AD;
 }
 
 .hot-blog .hot-blog-list li{

@@ -178,14 +178,10 @@
 }
 
 #postNav .heading{
-    cursor: initial;
-    font-weight: 700;
-    border: none;
-    padding: 8px 12px 8px 18px;
-    font-size: 16px;
-    color: #333;
-    border-bottom: solid 1px #ebebeb;
-    background: #d9dee2;
+    margin-bottom: 0;
+    border-bottom: 2px solid #00B5AD;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 #postNav >ul{
@@ -216,8 +212,8 @@
 }
 
 #postNav >ul .active{
-    color: #21ba45;
+    color: #00B5AD;
 }
 #postNav >ul .active>a{
-    color: #21ba45;
+    color: #00B5AD;
 }

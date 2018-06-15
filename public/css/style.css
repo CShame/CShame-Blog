@@ -4,7 +4,8 @@ body {
   height: 100%;
   margin: 0 auto;
   /*min-height: 1530px;*/
-  background: #f5f6f7;
+  /*background: #f5f6f7;*/
+  background: url(../public/pic/bg.png);
 }
 
 h3 a,h3,h2,h2 a{
@@ -162,7 +163,7 @@ h3 a:hover{
 }
 
 .footer .imgs i:hover{
-  color: cadetblue;
+  color: #00B5AD;
 }
 
 .footer .font{

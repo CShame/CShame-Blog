@@ -26,9 +26,11 @@
             if (window.innerWidth > 1200) {
                 $("#navFixed").css({"display": "none", "position": "static"});
                 $(window).scroll(scrollEvent);
+                $("#searchBox").css({"display": "block"});
             } else {
                 $(window).unbind('scroll', scrollEvent);
                 $("#navFixed").css({"display": "block", "position": "fixed"});
+                $("#searchBox").css({"display": "none"});
             }
         } else {
             $("#navFixed").css({"display": "block", "position": "fixed"});

@@ -2,11 +2,15 @@
 .nav >.grid{
   background:url('/public/pic/bg3.jpg');
   margin:0;
+  background-color: transparent;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 @media screen and (min-width: 1901px) {
   .nav> .grid{
-    background-repeat: round !important;
+    /*background-repeat: round !important;*/
   }
 }
 
@@ -35,7 +39,7 @@
 
 .nav .grid #dimmer{
   width:100%;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.6);
   position: absolute;
 }
 
@@ -107,7 +111,7 @@
 #navFixed{
   height:70px;
   width:100%;
-  background:#24292e;
+  background:rgba(0,0,0,0.6);
   top:0;
   left:0;
   display:none;

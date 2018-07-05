@@ -1,11 +1,21 @@
 /* ---------- nav ---------- */
 .nav >.grid{
-  background:url('/public/pic/bg3.jpg');
+  /*background:url('/public/pic/view1.jpg');*/
   margin:0;
   background-color: transparent;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  animation-delay: 0s;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+  /*transition: all 0.5s ease-in;*/
+}
+
+@keyframes fadein {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 @media screen and (min-width: 1901px) {

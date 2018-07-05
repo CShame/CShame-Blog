@@ -52,4 +52,28 @@
             $("#navFixed").css({"display": "none", "position": "static"});
         }
     }
+
+    if(window.location.pathname == '/posts'){
+        var viewIndex = 0;
+        addFadeInBackground('/public/pic/view'+viewIndex+'.jpg', 'nav');
+        setInterval(function () {
+            if(viewIndex < 5){
+                viewIndex++;
+            }else{
+                viewIndex = 0;
+            }
+            addFadeInBackground('/public/pic/view'+viewIndex+'.jpg', 'nav');
+        },8000)
+    }
+
+    function addFadeInBackground(url, domId) {
+        var background = new Image();
+        background.src = url;
+        background.onload = function () {
+            console.log('Background load complete!');
+            var loadbackground = document.getElementById(domId);
+            loadbackground.style.backgroundImage = 'url(' + background.src + ')';
+            loadbackground.style.animationName = 'fadein';
+        }
+    }
 </script>

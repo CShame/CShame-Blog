@@ -23,7 +23,4 @@
 * 删除文章
 * 退出登录
 
-#### 说明：
-[初始代码来之N-blog](https://github.com/nswbmw/N-blog)
-
 

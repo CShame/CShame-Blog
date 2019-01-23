@@ -1,21 +1,13 @@
 /* ---------- nav ---------- */
 .nav >.grid{
-  /*background:url('/public/pic/view1.jpg');*/
   margin:0;
   background-color: transparent;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  animation-delay: 0s;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease;
-  /*transition: all 0.5s ease-in;*/
-}
-
-@keyframes fadein {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  transition-property: background-image;
+  transition-duration: 1.5s;
+  transition-timing-function: linear;
 }
 
 @media screen and (min-width: 1901px) {
@@ -93,6 +85,7 @@
   margin-left: 10px;
 }
 
+
 @media screen and (max-width: 410px){
   #navFixed .smallSearchBox{
     display: none;
@@ -128,6 +121,12 @@
   position:static;
   z-index: 100;
   padding-top: 14px;
+}
+
+.nav #nav-describe {
+  margin-bottom: 200px;
+  color: #fff;
+  font-size: 337.5%;
 }
 
 

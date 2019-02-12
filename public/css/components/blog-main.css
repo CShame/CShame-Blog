@@ -206,6 +206,8 @@
     position: relative;
     background: #fff;
     min-height: 210px;
+    max-height: 502px;
+    overflow-y: scroll;
 }
 
 #postNav >ul>li{
